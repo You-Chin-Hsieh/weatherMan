@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Weather Man</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/weather-icons.min.css" rel="stylesheet">
+    <link href="css/bootstrap-grid.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/full-width-pics.css" rel="stylesheet">
+    <script src="js/d3.js"></script>
+
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container-fluid bg-warning">
+    <nav class="navbar navbar-inverse navbar-fixed-top " role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <img src="image/icon/logo.png" width="50em">
+                <span class="text-warning lead text-muted"><strong>WeatherMan</strong></span>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#currentlyWeather">現在天氣</a>
+                    </li>
+                    <li>
+                        <a href="#myCarousel">最近天氣狀況</a>
+                    </li>
+                    <li>
+                        <a href="#otherCountry">選擇縣市</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="currentlyWeather" class="container-fluid">
+        <canvas id="icon1" class="img-responsive img-center"></canvas>
+        <div class="row" style="margin-bottom: 30% ;left:0px;margin-left: 0px" id="place2">
+            <table class="table table-hover table-responsive table-inverse table col-12">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>apparent Temperature</th>
+                    <th>cloud Cover</th>
+                    <th>Weather</th>
+                    <th>summary</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row" ><span id="Country2"></span></th>
+                    <td ><span id="apparentTemperature2"></span></td>
+                    <td ><span id="cloudCover2"></span></td>
+                    <td><span  id="Weather2"></span></td>
+                    <td><span  id="summary2"></span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+    <section id="recently">
+        <div id="myCarousel" class="carousel slide bg-primary" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+                <li data-target="#myCarousel" data-slide-to="4"></li>
+                <li data-target="#myCarousel" data-slide-to="5"></li>
+                <li data-target="#myCarousel" data-slide-to="6"></li>
+                <li data-target="#myCarousel" data-slide-to="7"></li>
+                <li data-target="#myCarousel" data-slide-to="8"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" id="innerCarousel">
+                <div class="item active">
+                    <canvas id="startPic"></canvas>
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </section>
+    <section id="otherCountry">
+        <form  action="" method="post">
+            <div class="styled-select green rounded">
+                <select  name="selectedCountry" id="selectedCountry">
+                    <option>請選擇您的地區...</option>
+                    <option value="Keelung_City">基隆市</option>
+                    <option value="Taipei_City">臺北市</option>
+                    <option value="New_Taipei_City">新北市</option>
+                    <option value="Taoyuan_City">桃園市</option>
+                    <option value="Hsinchu_City">新竹市</option>
+                    <option value="Miaoli_County">苗栗縣</option>
+                    <option value="Taichung_City">台中市</option>
+                    <option value="Chungha_City">彰化縣</option>
+                    <option value="Nantou_County">南投縣</option>
+                    <option value="Yunlin_County">雲林縣</option>
+                    <option value="Chiayi_City">嘉義市</option>
+                    <option value="Chiayi_County">嘉義縣</option>
+                    <option value="Tainan_City">臺南市</option>
+                    <option value="Kaohsiung_City">高雄市</option>
+                    <option value="Pingtung_County">屏東縣</option>
+                    <option value="Hualien_County">花蓮縣</option>
+                    <option value="Taitung_County">臺東縣</option>
+                    <option value="Yilan_County">宜蘭縣</option>
+                    <option value="Kinmen_County">金門縣</option>
+                </select>
+            </div>
+
+        </form>
+        <div class="row" style="margin-bottom: 10% ;left:0px;margin-left: 0px" id="place">
+            <table class="table table-hover table-responsive table-inverse table col-xl-12  col-lg-12 col-md-12 col-sm-12" style="height: 50%">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>apparent Temperature</th>
+                    <th>cloud Cover</th>
+                    <th>Weather</th>
+                    <th>summary</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row" id="Country"></th>
+                    <td id="apparentTemperature"></td>
+                    <td id="cloudCover"></td>
+                    <td id="Weather"></td>
+                    <td id="summary"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <section class="container">
+        <div>
+            <ul  class="nav nav-pills">
+                <li class="col-sm-2"><a  href="#1a" data-toggle="tab">weather.com</a></li>
+                <li  class="col-sm-2"><a href="#2a" data-toggle="tab">Dark Sky Net</a></li>
+                <li  class="col-sm-2"><a href="#3a" data-toggle="tab">世界天氣信息服務網</a></li>
+            </ul>
+            <div class="tab-content clearfix">
+                <div class="tab-pane active" id="1a">
+                    <iframe src="https://weather.com/weather/today/l/25.07,121.58?temp=c&par=google" width="500" height="500"></iframe>
+                </div>
+                <div class="tab-pane" id="2a">
+                    <iframe src="https://darksky.net/forecast/"  width="500" height="500"></iframe>
+                </div>
+                <div class="tab-pane" id="3a">
+                    <iframe src="http://worldweather.wmo.int/tc/home.html"  width="500" height="500"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/jquery.js"></script>
+    <link rel="stylesheet" href="css/full-slider.css">
+    <script src="js/skycons.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/weather.js"></script>
+</div>
+</body>
+
+</html>
